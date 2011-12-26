@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <title>XSBT.org</title>
+    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/favicon.ico" />
+
+    <meta name="keywords" content="SBT, XSBT, Scala, Simple Build Tool, Launch, Launcher" />
+    <meta name="description" content="A place to download Simple Build Tool Launchers" />
+    <meta name="author" content="Element d.o.o." />
+
+    <link rel="stylesheet" type="text/css" href="/static/css/blueprint/screen.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/less/xsbt.css"/>
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="header">
+        <h1>XSBT.org - Simple Build Tool Launch repository</h1>
+      </div>
+
+      <ul class="horizontal likemenu">
+        <li><a target="_blank" href="https://github.com/harrah/xsbt"
+          title="Open the official GitHub repo">Official GitHub repo</a></li>
+        <li><a target="_blank" href="http://www.scala-sbt.org/"
+          title="Open the official website">Official website</a></li>
+        <li><a target="_blank" href="http://repo.typesafe.com/typesafe/ivy-releases/org.scala-tools.sbt/sbt-launch/"
+          title="Open the official Typesafe binary repo">Typesafe repo</a></li>
+        <li><a target="_blank" href="http://code.google.com/p/simple-build-tool/wiki/Setup"
+          title="Open the legacy Google code pages">Legacy Google code pages</a></li>
+      </ul>
+
+      <table id="releases" class="tablesorter lift:VersionsTable">
+        <thead>
+          <tr>
+            <th title="Standardized launcher name">Version<sup>*</sup></th>
+            <th title="Publication date">Date<sup>*</sup></th>
+            <th title="Size in kibibytes">Size<sup>*</sup></th>
+            <th title="Remote HTTP URL (original source)">Remote<sup>*</sup></th>
+            <th title="Redirect to the remote HTTP URL">Proxy<sup>*</sup></th>
+            <th title="Download from Xsbt.org via HTTP">Local<sup>*</sup></th>
+            <th title="Download from Xsbt.org via FTP">FTP<sup>*</sup></th>
+            <th title="Download from Xsbt.org via Gopher">Gopher<sup>*</sup></th>
+            <th title="Hover for the SHA-1 checksum, or download as a file">SHA-1<sup>*</sup></th>
+            <th title="Hover for the MD5 checksum, or download as a file">MD5<sup>*</sup></th>
+            <th title="Download the remote URL as a file">URL<sup>*</sup></th>
+            <th title="Download a targeted version of GRUJ for this launcher">GRUJ<sup>*</sup></th>
+            <th title="Download an optimized (recompressed) version of this launcher">Opt<sup>*</sup></th>
+            <th title="Download a Windows executable version of this launcher">Exe<sup>*</sup></th>
+          </tr>
+        </thead>
+
+        <tfoot>
+          <tr>
+            <th colspan="14">
+              <a id="show-legacy" href="/show-legacy" title="Click to show all launchers" ver:show_legacy_hidden="hidden">
+                <ver:show_legacy_message>Showing %d out of %d &ndash; click to show legacy launchers</ver:show_legacy_message>
+              </a>
+              <a id="hide-legacy" href="/hide-legacy" title="Click to show use case launchers" ver:hide_legacy_hidden="hidden">
+                Showing all launchers &ndash; click to hide legacy launchers
+              </a>
+            </th>
+          </tr>
+        </tfoot>
+
+        <tbody>
+        <ver:row>
+          <tr ver:legacy_class="legacy" ver:legacy_hidden="hidden">
+            <td><var><ver:filename_sort/></var><ver:filename/></td>
+            <td><span ver:publish_timestamp="Published on: %s"><ver:publish_date/></span></td>
+            <td><var><ver:filesize_sort/></var><span ver:filesize="Filesize: %s bytes"><ver:filesize_kb/> KiB</span></td>
+            <td><a ver:remote_jar="">Link</a></td>
+            <td><a ver:proxy_jar="">Link</a></td>
+            <td><a ver:local_jar="">Link</a></td>
+            <td><a ver:ftp_jar="">Link</a></td>
+            <td><a ver:gopher_jar="">Link</a></td>
+            <td><a ver:local_sha1="" ver:sha1="SHA-1: %s">Link</a></td>
+            <td><a ver:local_md5="" ver:md5="MD5: %s">Link</a></td>
+            <td><a ver:local_url="">Link</a></td>
+            <td><ver:gruj><a ver:local_gruj="" ver:gruj_title="GRUJ bootloader for %s">Link</a></ver:gruj><ver:no_gruj><span ver:gruj_na="GRUJ bootloader for %s is not available">&ndash;</span></ver:no_gruj></td>
+            <td><ver:opt><a ver:local_opt="" ver:opt_title="Optimized version of %s (%s bytes)">Link</a></ver:opt><ver:no_opt><span ver:opt_na="Optimized version of %s is not available">&ndash;</span></ver:no_opt></td>
+            <td><ver:exe><a ver:local_exe="" ver:exe_title="Windows executable version of %s">Link</a></ver:exe><ver:no_exe><span ver:exe_na="Windows executable version of %s is not available">&ndash;</span></ver:no_exe></td>
+          </tr>
+        </ver:row>
+        </tbody>
+      </table>
+
+      <hr />
+
+      <h3>Legend:</h3>
+      <ul id="legend">
+        <li>
+          <strong>Version</strong>:<br />
+          Standardized launcher name, which may differ from the original filename<br />
+          (e.g. all 0.11.x are originally named just &quot;sbt-launch.jar&quot;)
+        </li>
+        <li>
+          <strong id="date">Date</strong>:<br />
+          Date when the launcher was first published on the binary repository.
+        </li>
+        <li>
+          <strong id="size">Size</strong>:<br />
+          Size in kibibytes.
+        </li>
+        <li>
+          <strong id="remote">Remote</strong>:<br />
+          Direct URL link to the remote HTTP binary repository.
+        </li>
+        <li>
+          <strong id="proxy">Proxy</strong>:<br />
+          This link performs a redirect to the official binary release repository.<br />
+          Essentially this is an URL shortening service at the moment,
+          but the idea is that if the original repo goes down the proxy
+          link will redirect to the next available failover repository
+          or serve the local launcher instance.
+        </li>
+        <li>
+          <strong id="local">Local</strong>:<br />
+          Local copy of the release, direct HTTP download.
+        </li>
+        <li>
+          <strong id="ftp">FTP</strong>:<br />
+          Local copy of the release, direct FTP download.<br />
+          FTP download index is available at <a href="ftp://xsbt.org/" title="Open FTP version of xsbt.org" target="_blank">ftp://xsbt.org/</a><br />
+          Alternatively, you can also use the FTPs (secure) connection at <a href="ftps://xsbt.org/" title="Open FTPs version of xsbt.org" target="_blank">ftps://xsbt.org/</a>
+        </li>
+        <li>
+          <strong id="gopher">Gopher</strong>:<br />
+          Local copy of the release, direct Gopher download.<br />
+          Gopher download index is available at <a href="gopher://xsbt.org/" title="Open Gopher version of xsbt.org" target="_blank">gopher://xsbt.org/</a>
+        </li>
+        <li>
+          <strong id="sha-1">SHA-1</strong>:<br />
+          Local copy of the SHA-1 launcher checksum in a plaintext file.<br />
+          You can also hover over the link to see the checksum.
+        </li>
+        <li>
+          <strong id="md5">MD5</strong>:<br />
+          Local copy of the MD5 launcher checksum in a plaintext file.<br />
+          You can also hover over the link to see the checksum.
+        </li>
+        <li>
+          <strong id="url">URL</strong>:<br />
+          Local copy of the remote repository HTTP URL in a plaintext file.
+        </li>
+        <li>
+          <strong id="gruj">GRUJ</strong>:<br />
+          Local copy of a GRUJ bootloader for that specific launcher.<br />
+          GRUJ will download the launcher from the official repo.<br />
+          See <a href="http://gruj.org/" title="Open GRUJ homepage" target="_blank">http://gruj.org/</a>
+        </li>
+        <li>
+          <strong id="opt">Opt</strong>:<br />
+          An optimized version of the launcher jar optimized with
+          <a title="Open Ken Silverman's Utility Page" href="http://advsys.net/ken/utils.htm" target="_blank">KZip</a> &amp;
+          <a title="Open 7-Zip homepage" href="http://www.7-zip.org/" target="_blank">7-Zip</a> trials,<br />
+          deflate stream trimmed with
+          <a title="Open Ben Jos Walbeehm's Download Page" href="http://www.walbeehm.com/download/" target="_blank">DeflOpt</a> &amp;
+          <a title="Open defluff release thread" rel="external" href="http://encode.ru/threads/1214-defluff-a-deflate-huffman-optimizer" target="_blank">defluff</a>.<br />
+          All the bytecode and resources are bytewise identical, but the resulting jar file is about 5% smaller.
+        </li>
+        <li>
+          <strong id="exe">Exe</strong>:<br />
+          Windows executable version of the sbt launchers, packaged with
+          <a href="http://launch4j.sourceforge.net/" title="Open Launch4j homepage" target="_blank">launch4j</a>.<br />
+          Project homepage: <a href="https://github.com/sbt/sbt-windows-install" target="_blank" title="Open the SBT Windows GitHub project homepage">https://github.com/sbt/sbt-windows-install</a>
+        </li>
+      </ul>
+    </div>
+
+    <script type="text/javascript" src="/static/js/jquery-1.7.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.tablesorter-2.0.5b.min.js"></script>
+    <script type="text/javascript" src="/static/coffee/xsbt.js"></script>
+    <lift:embed what="google-analytics"/>
+  </body>
+</html>

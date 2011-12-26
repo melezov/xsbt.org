@@ -1,0 +1,19 @@
+server {
+  listen 80;
+  server_name .xsbt.org;
+
+  access_log /home/www/xsbt.org/logs/nginx/access.log;
+  error_log /home/www/xsbt.org/logs/nginx/error.log;
+  
+  location ~ ^/(favicon\.ico|robots\.txt|static/.*)$ {
+    root    /home/www/xsbt.org/code/lift/src/main/webapp/;
+    expires 30d;
+  }
+
+  location / {
+    proxy_pass http://localhost:8120;
+    proxy_set_header REMOTE_ADDR $remote_addr;
+    proxy_set_header HOST $host;
+    proxy_set_header PROXY true;
+  }
+}

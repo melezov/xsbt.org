@@ -1,0 +1,208 @@
+@link: #B22222;
+@global-radius: 2px;
+
+@path: '../';
+@img-path: '@{path}img/';
+
+.border-radius(@radius: @global-radius) {
+  border-radius: @radius;
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+}
+
+.box-shadow(@params) {
+  box-shadow: @params;
+  -moz-box-shadow: @params;
+  -webkit-box-shadow: @params;
+}
+
+.grad(@from, @to) {
+  background: -moz-linear-gradient(0% 100% 90deg, @to, @from);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@from), to(@to));
+  background: -o-linear-gradient(top, @from 0%, @to 100%);
+  background: -ms-linear-gradient(top, @from 0%, @to 100%);
+  background: linear-gradient(top, @from 0%, @to 100%);
+}
+
+.grad-3(@dir, @stop1, @stop2, @stop3){
+  background: -moz-linear-gradient(@dir, @stop1, @stop2, @stop3);
+  background: -webkit-linear-gradient(@dir, @stop1, @stop2, @stop3);
+  background: -o-linear-gradient(@dir, @stop1, @stop2, @stop3);
+  background: -ms-linear-gradient(@dir, @stop1, @stop2, @stop3);
+  background: linear-gradient(@dir, @stop1, @stop2, @stop3);
+}
+
+/* -------------------------------------------------------------------------- */
+
+body {
+  background: #FFF url('@{img-path}logo/xsbt-background.png') no-repeat fixed left top;
+}
+
+/* -------------------------------------------------------------------------- */
+a {
+  &:link, &:visited {
+    color: @link;
+    text-decoration: none;
+    padding: 1px 3px;
+  }
+
+  &:hover {
+    color: #FFF;
+    background: @link;
+    text-shadow: 1px 1px 0 #700000;
+    .border-radius;
+  }
+}
+
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: "";
+  zoom: 1;
+  *display: inline;
+}
+ul.horizontal {
+  padding: 0;
+  margin: 0 0 1.5em;
+
+  li {
+    display: inline;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+table {
+  @tback: #FFF;
+
+  background: @tback;
+  background: fadeout(@tback, 45%);
+
+  thead tr th {
+    @hback: #DDD;
+
+    background: @hback;
+    border-bottom: 2px solid #AAA;
+    text-align: center;
+    text-shadow: 1px 1px 0 #FFF;
+
+    &:first-child {
+      .border-radius(2px 0 0 0);
+    }
+    &:last-child {
+      .border-radius(0 2px 0 0);
+    }
+  }
+
+  tbody tr {
+  @darker: #E5E5E5;
+  @lighter: #F5F5F5;
+
+    &:hover td {
+      background: @darker !important;
+    }
+    &.legacy td:first-child {
+      font-weight: normal;
+    }
+
+    &:nth-child(2n) td,
+    &.even td {
+      background: @lighter;
+      background: fadeout(@lighter, 45%);
+      border-top: 1px solid @darker;
+      border-bottom: 1px solid @darker;
+
+      &:first-child {
+        border-left: 1px solid @darker;
+        .border-radius(2px 0 0 2px);
+      }
+
+      &:last-child {
+        border-right: 1px solid @darker;
+        .border-radius(0 2px 2px 0);
+      }
+    }
+
+    td {
+      text-align: center;
+
+      &:first-child {
+        font-weight: bold;
+        text-align: left;
+      }
+    }
+  }
+
+  tfoot th {
+    text-align: center;
+    border-top: 1px solid #E5E5E5;
+    .grad(#FFF, fadeout(#FFF, 100%));
+  }
+
+  sup {
+    color: @link;
+  }
+
+  &.tablesorter thead tr {
+    * {
+      background-repeat: no-repeat;
+      background-position: center right;
+    }
+
+    .header {
+      background-image: url('@{img-path}tablesorter/bg.gif');
+      cursor: pointer;
+    }
+
+    .headerSortUp {
+      background-image: url('@{img-path}tablesorter/asc.gif');
+    }
+
+    .headerSortDown {
+      background-image: url('@{img-path}tablesorter/desc.gif');
+    }
+
+    .headerSortDown, .headerSortUp {
+      background-color: #BBB;
+    }
+  }
+}
+
+var {
+  display: none;
+}
+
+/* -------------------------------------------------------------------------- */
+#header {
+  margin: 1em 0;
+
+  h1 {
+    text-shadow: 3px 3px 2px #DDD;
+  }
+}
+
+ul.likemenu {
+  margin: 3em 0;
+
+  li a {
+    padding: 0.5em 0.75em;
+    border: 1px solid #E5E5E5;
+    margin: 0 0.5em 0 0;
+    .grad(fadeout(#E5E5E5, 75%), fadeout(#E5E5E5, 25%));
+    .box-shadow(0 2px 4px fadeout(#888, 85%));
+    .border-radius;
+
+    &:hover {
+      border-color: darken(@link, 10%);
+      .grad(darken(@link, 5%), lighten(@link, 5%));
+      .box-shadow(0 2px 2px fadeout(#888, 50%));
+    }
+    &:active {
+      position: relative;
+      top: 2px;
+      .box-shadow(none);
+    }
+  }
+}
+
+#legend li {
+  padding-bottom: 1em;
+}
