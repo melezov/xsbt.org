@@ -2,13 +2,14 @@ import sbt._
 import Keys._
 
 object BuildSettings {
-  import Formatting._
-
   val coreSets = Defaults.defaultSettings ++ Seq(
     organization  := "Element d.o.o.",
+
     scalaVersion  := "2.9.1",
-    scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "UTF-8", "-optimise") // , "-Yrepl-sync"
-  ) ++ formatSettings
+    scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "UTF-8", "-optimise", "-Yrepl-sync"),
+
+    unmanagedSourceDirectories in Test := Nil
+  )
 
   val bsCore = coreSets ++ Seq(
     name          := "Xsbt.org - Core",
@@ -17,24 +18,26 @@ object BuildSettings {
 
   val bsLift = coreSets ++ Seq(
     name          := "Xsbt.org - Lift",
-    version       := "0.0.1"
+    version       := "0.0.1",
+
+    unmanagedSourceDirectories in Compile <<= (scalaSource in Compile)( _ :: Nil)
   )
 }
 
 object Dependencies {
-  val jetty  = "org.eclipse.jetty" % "jetty-webapp" % "8.1.0.RC2" % "container"
+  val jetty = "org.eclipse.jetty" % "jetty-webapp" % "7.6.0.v20120127" % "container"
 
-  val liftVersion = "2.4-RC1"
+  val liftVersion = "2.4"
   val liftweb = Seq(
     "net.liftweb" %% "lift-webkit" % liftVersion % "compile"
   )
 
-  val scalatime = "org.scala-tools.time" %% "time" % "0.5"
+  val etbLift = "hr.element.etb" %% "etb-lift" % "0.0.15"
+
+  val scalaTime = "org.scala-tools.time" %% "time" % "0.5"
   val commonsIo = "commons-io" % "commons-io" % "2.1"
 
   val logback = "ch.qos.logback" % "logback-classic" % "1.0.0" % "compile->default"
-
-  val scalatest = "org.scalatest" %% "scalatest" % "1.6.1" % "test"
 }
 
 object XOBuild extends Build {
@@ -53,14 +56,13 @@ object XOBuild extends Build {
   import less.Plugin._
   import LessKeys._
 
-  val depsCore = Seq(
-    scalatest
-  )
+  val depsCore = Seq()
 
   val depsLift = liftweb ++ Seq(
     jetty,
+    etbLift,
     commonsIo,
-    scalatime,
+    scalaTime,
     logback
   )
 
@@ -87,36 +89,4 @@ object XOBuild extends Build {
       resourceManaged in (Compile, less) <<= (webappResources in Compile)(_.get.head / "static" / "less")
     )
   ) dependsOn(core)
-}
-
-object Formatting {
-  // Scalariform plugin
-  import com.typesafe.sbtscalariform._
-  import ScalariformPlugin._
-  import scalariform.formatter.preferences._
-
-  ScalariformKeys.preferences := FormattingPreferences()
-    .setPreference(AlignParameters, false)
-    .setPreference(AlignSingleLineCaseStatements, false)
-    .setPreference(AlignSingleLineCaseStatements.MaxArrowIndent, 40)
-    .setPreference(CompactControlReadability, true)
-    .setPreference(CompactStringConcatenation, false)
-    .setPreference(DoubleIndentClassDeclaration, true)
-    .setPreference(FormatXml, false)
-    .setPreference(IndentLocalDefs, false)
-    .setPreference(IndentPackageBlocks, false)
-    .setPreference(IndentSpaces, 2)
-    .setPreference(IndentWithTabs, false)
-    .setPreference(MultilineScaladocCommentsStartOnFirstLine, true)
-    .setPreference(PlaceScaladocAsterisksBeneathSecondAsterisk, true)
-    .setPreference(PreserveDanglingCloseParenthesis, false)
-    .setPreference(PreserveSpaceBeforeArguments, false)
-    .setPreference(RewriteArrowSymbols, false)
-    .setPreference(SpaceBeforeColon, false)
-    .setPreference(SpaceInsideBrackets, false)
-    .setPreference(SpaceInsideParentheses, false)
-    .setPreference(SpacesWithinPatternBinders, true)
-
-  lazy val formatSettings =
-    ScalariformPlugin.defaultScalariformSettings
 }

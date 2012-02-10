@@ -1,20 +1,24 @@
 package org.xsbt.snippet
 
-import _root_.org.xsbt.versions._
-import _root_.org.scala_tools.time.Imports._
-
 import org.xsbt.lib.URIs
+import org.xsbt.versions._
+import SBTVersions.versions
 
-import scala.xml._
-import net.liftweb.http.SessionVar
-import net.liftweb.util.BindPlus._
-import net.liftweb.util.Helpers._
-import scala.collection.JavaConversions._
+import org.scala_tools.time.Imports._
+
 import java.text.NumberFormat
 import java.util.Locale
-import net.liftweb.util.PassThru
-import org.xsbt.versions._
-import SBTVersions._
+
+import scala.xml._
+import scala.collection.JavaConversions._
+
+import net.liftweb._
+import http._
+import util._
+import BindPlus._
+import Helpers._
+
+import hr.element.etb.lift.util.Helpers._
 
 object VersionRow {
   def maxNumFmt(num: Int) =
@@ -98,15 +102,12 @@ object VersionsTable {
   def formatDate(millis: Int) =
     new DateTime(millis).toString("YYYY-MM-dd")
 
-  def describe(content: Any*) =
-    (n: NodeSeq) => Text(n.text.format(content: _*))
-
   def showGrujed(vR: VersionRow) =
     (n: NodeSeq) =>
       if (vR.v.grujed) {
         n.bind("ver",
           AttrBindParam("local_gruj", vR.localGruj, "href"),
-          FuncAttrBindParam("gruj_title", describe(vR.v.filename), "title")
+          FuncFormatAttrBindParam("gruj_title", "title", vR.v.filename)
         )
       }
       else {
@@ -120,7 +121,7 @@ object VersionsTable {
       }
       else {
         n.bind("ver",
-          FuncAttrBindParam("gruj_na", describe(vR.v.filename), "title")
+          FuncFormatAttrBindParam("gruj_na", "title", vR.v.filename)
         )
       }
 
@@ -129,7 +130,7 @@ object VersionsTable {
       if (vR.v.opted) {
         n.bind("ver",
           AttrBindParam("local_opt", vR.localOpt, "href"),
-          FuncAttrBindParam("opt_title", describe(vR.v.filename, vR.formatOptSize), "title")
+          FuncFormatAttrBindParam("opt_title", "title", vR.v.filename, vR.formatOptSize)
         )
       }
       else {
@@ -143,7 +144,7 @@ object VersionsTable {
       }
       else {
         n.bind("ver",
-          FuncAttrBindParam("opt_na", describe(vR.v.filename), "title")
+          FuncFormatAttrBindParam("opt_na", "title", vR.v.filename)
         )
       }
 
@@ -152,7 +153,7 @@ object VersionsTable {
       if (vR.v.exeed) {
         n.bind("ver",
           AttrBindParam("local_exe", vR.localExe, "href"),
-          FuncAttrBindParam("exe_title", describe(vR.v.filename), "title")
+          FuncFormatAttrBindParam("exe_title", "title", vR.v.filename)
         )
       }
       else {
@@ -166,7 +167,7 @@ object VersionsTable {
       }
       else {
         n.bind("ver",
-          FuncAttrBindParam("exe_na", describe(vR.v.filename), "title")
+          FuncFormatAttrBindParam("exe_na", "title", vR.v.filename)
         )
       }
 
@@ -190,10 +191,10 @@ object VersionsTable {
       "filename" -> v.filename,
 
       "publish_date" -> vR.isoDate,
-      FuncAttrBindParam("publish_timestamp", describe(vR.isoTimestamp), "title"),
+      FuncFormatAttrBindParam("publish_timestamp", "title", vR.isoTimestamp),
 
       "filesize_sort" -> vR.paddedSize,
-      FuncAttrBindParam("filesize", describe(vR.formatFilesize), "title"),
+      FuncFormatAttrBindParam("filesize", "title", vR.formatFilesize),
       "filesize_kb" -> vR.kbSize,
 
       AttrBindParam("local_jar", vR.localJar, "href"),
@@ -204,10 +205,10 @@ object VersionsTable {
       AttrBindParam("gopher_jar", vR.gopherJar, "href"),
 
       AttrBindParam("local_md5", vR.localMD5, "href"),
-      FuncAttrBindParam("md5", describe(v.md5), "title"),
+      FuncFormatAttrBindParam("md5", "title", v.md5),
 
       AttrBindParam("local_sha1", vR.localSHA1, "href"),
-      FuncAttrBindParam("sha1", describe(v.sha1), "title"),
+      FuncFormatAttrBindParam("sha1", "title", v.sha1),
 
       AttrBindParam("local_url", vR.localURL, "href"),
       "gruj" -> showGrujed(vR),
@@ -226,7 +227,7 @@ object VersionsTable {
       FuncAttrOptionBindParam("hide_legacy_hidden", attrIf(!ShowAll.is), "hidden"),
       FuncAttrOptionBindParam("show_legacy_hidden", attrIf(ShowAll.is), "hidden"),
       "show_legacy_message" ->
-        describe(VersionRow.useCaseCount, VersionRow.totalCount)
+        ((n: NodeSeq) => Text(n.text.format(VersionRow.useCaseCount, VersionRow.totalCount)))
     ).bind("ver",
       "row" ->
         ((n: NodeSeq) => versions.reverse.flatMap(renderRow(_)(n))

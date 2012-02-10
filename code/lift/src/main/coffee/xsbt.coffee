@@ -29,3 +29,9 @@ $ ->
     $('#hide-legacy').hide()
     $('.legacy').attr('hidden', 'hidden')
     $('#show-legacy').show()
+
+  $('thead th').click ->
+    $('body').scrollTo(
+      $('#'+$(@).attr('rel')),500, {axis:'y'}
+    ) unless $(@).children().length is 0
+ 

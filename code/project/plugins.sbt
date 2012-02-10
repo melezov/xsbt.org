@@ -8,14 +8,14 @@
 
 resolvers += Classpaths.typesafeResolver
 
-addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.0.0-M2")
+addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.0.0-RC1")
 
 // +-------------------------------------------------------------------------------------+
 // | XSBT Web plugin (https://github.com/siasia/xsbt-web-plugin)                         |
 // | Implements SBT 0.7.x Web project actions: "jetty-run" -> "container:start", etc ... |
 // +-------------------------------------------------------------------------------------+
 
-libraryDependencies <+= sbtVersion(v => "com.github.siasia" %% "xsbt-web-plugin" % (v+"-0.2.10"))
+libraryDependencies <+= sbtVersion(v => "com.github.siasia" %% "xsbt-web-plugin" % (v+"-0.2.11"))
 
 // +------------------------------------------------------------------------------------+
 // | CoffeeScripted SBT (https://github.com/softprops/coffeescripted-sbt)               |
@@ -26,7 +26,7 @@ libraryDependencies <+= sbtVersion(v => "com.github.siasia" %% "xsbt-web-plugin"
 
 resolvers += "less is" at "http://repo.lessis.me"
 
-addSbtPlugin("me.lessis" % "coffeescripted-sbt" % "0.2.0")
+addSbtPlugin("me.lessis" % "coffeescripted-sbt" % "0.2.1")
 
 // +------------------------------------------------------------------------------------+
 // | Less SBT (https://github.com/softprops/less-sbt)                                   |
@@ -37,15 +37,4 @@ addSbtPlugin("me.lessis" % "coffeescripted-sbt" % "0.2.0")
 
 resolvers += "less is" at "http://repo.lessis.me"
 
-addSbtPlugin("me.lessis" % "less-sbt" % "0.1.3")
-
-// +------------------------------------------------------------------------------------+
-// | SBT Scalariform (https://github.com/typesafehub/sbt-scalariform)                   |
-// | Performs source code formatting                                                    |
-// |                                                                                    |
-// | See also: Scalariform reference (http://mdr.github.com/scalariform/)               |
-// +------------------------------------------------------------------------------------+
-
-resolvers += Classpaths.typesafeResolver
-
-addSbtPlugin("com.typesafe.sbtscalariform" % "sbtscalariform" % "0.3.0")
+addSbtPlugin("me.lessis" % "less-sbt" % "0.1.7")
