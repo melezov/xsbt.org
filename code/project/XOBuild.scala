@@ -8,7 +8,9 @@ object BuildSettings {
     scalaVersion  := "2.9.1",
     scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "UTF-8", "-optimise", "-Yrepl-sync"),
 
-    unmanagedSourceDirectories in Test := Nil
+    unmanagedSourceDirectories in Test := Nil,
+
+    resolvers := Seq("Element Releases" at "http://maven.element.hr/nexus/content/repositories/releases/")
   )
 
   val bsCore = coreSets ++ Seq(
