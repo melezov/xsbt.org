@@ -12,6 +12,7 @@ import lib.URIs
 class Boot extends Bootable {
   def boot {
     LiftRules.addToPackages("org.xsbt")
+    LiftRules.addToPackages("hr.element.etb.lift")
 
     LiftRules.setSiteMap(SiteMap(
       Menu.i("Index") / "index"

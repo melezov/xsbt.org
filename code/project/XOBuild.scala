@@ -5,7 +5,7 @@ object BuildSettings {
   val coreSets = Defaults.defaultSettings ++ Seq(
     organization  := "Element d.o.o.",
 
-    scalaVersion  := "2.9.1",
+    scalaVersion  := "2.9.2",
     scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "UTF-8", "-optimise", "-Yrepl-sync"),
 
     unmanagedSourceDirectories in Test := Nil,
@@ -31,15 +31,15 @@ object Dependencies {
 
   val liftVersion = "2.4"
   val liftweb = Seq(
-    "net.liftweb" %% "lift-webkit" % liftVersion % "compile"
+    "net.liftweb" % "lift-webkit_2.9.1" % liftVersion % "compile"
   )
 
-  val etbLift = "hr.element.etb" %% "etb-lift" % "0.0.15"
+  val etbLift = "hr.element.etb" % "etb-lift_2.9.1" % "0.0.20"
 
-  val scalaTime = "org.scala-tools.time" %% "time" % "0.5"
-  val commonsIo = "commons-io" % "commons-io" % "2.1"
+  val scalaTime = "org.scala-tools.time" % "time_2.9.1" % "0.5"
+  val commonsIo = "commons-io" % "commons-io" % "2.3"
 
-  val logback = "ch.qos.logback" % "logback-classic" % "1.0.0" % "compile->default"
+  val logback = "ch.qos.logback" % "logback-classic" % "1.0.3" % "compile->default"
 }
 
 object XOBuild extends Build {

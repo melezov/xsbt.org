@@ -1,8 +1,6 @@
 package org.xsbt.lib
 
 import java.io.File
-import net.liftweb.http.LiftRules
-import net.liftweb.http.Req
 import net.liftweb.common._
 import scala.collection.mutable.LinkedHashMap
 import _root_.org.xsbt.versions._
@@ -11,6 +9,7 @@ import _root_.org.apache.commons.io.{FileUtils, FilenameUtils}
 import net.liftweb.http._
 import net.liftweb.util.Helpers._
 import net.liftweb.util.Props
+import hr.element.etb.lift.lib._
 
 object URIs extends LiftRules.DispatchPF {
 
