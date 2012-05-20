@@ -8,8 +8,6 @@ code/lift/src/main/webapp/static/less/*.css
 code/project/boot
 code/project/project
 
-sbt-launch-*.jar
-
 files/ftp/*
 files/gopher/*
 
