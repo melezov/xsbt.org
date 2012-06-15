@@ -63,10 +63,10 @@ class VersionRow(val v: SBTVersion) {
     dateTime.toString("YYYY-MM-dd HH:mm:ss")
 
   val localJar =
-    URIs.HttpStub + v.filename
+    URIs.currentStub + v.filename
 
   val proxyJar =
-    URIs.HttpProxy + v.filename
+    URIs.currentProxy + v.filename
 
   val ftpJar =
     URIs.FtpStub + v.filename
@@ -84,16 +84,16 @@ class VersionRow(val v: SBTVersion) {
     localJar + ".url"
 
   val localGruj =
-    URIs.HttpStub + "gruj_vs_" + v.filename
+    URIs.currentStub + "gruj_vs_" + v.filename
 
   val localOpt =
-    URIs.HttpStub + v.filename.replace(".jar", "-opt.jar")
+    URIs.currentStub + v.filename.replace(".jar", "-opt.jar")
 
   val formatOptSize =
     VersionRow.bytesFormat.format(v.optSize)
 
     val localExe =
-    URIs.HttpStub + v.filename.replace(".jar", ".exe")
+    URIs.currentStub + v.filename.replace(".jar", ".exe")
 }
 
 object ShowAll extends SessionVar[Boolean](false)

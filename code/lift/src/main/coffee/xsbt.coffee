@@ -31,7 +31,7 @@ $ ->
     $('#show-legacy').show()
 
   $('thead th').click ->
+    id = $(@).text().toLowerCase().replace(/\*/, '')
     $('body').scrollTo(
-      $('#'+$(@).attr('rel')),500, {axis:'y'}
+      $('#'+id), 500, {axis:'y'}
     ) unless $(@).children().length is 0
- 

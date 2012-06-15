@@ -17,9 +17,13 @@ object URIs extends LiftRules.DispatchPF {
   val Stub = Host + "/"
   val Proxy = "proxy." + Stub
 
-  val HttpProxy = "http://" + Proxy
+  def proto() =
+    S.getRequestHeader("X-Forwarded-Proto")
+      .openOr("http") + "://"
 
-  val HttpStub = "http://" + Stub
+  def currentProxy() = proto() + Proxy
+  def currentStub() = proto() + Stub
+
   val FtpStub = "ftp://" + Stub
   val GopherStub = "gopher://" + Stub
 
@@ -43,45 +47,51 @@ object URIs extends LiftRules.DispatchPF {
     val files = {
       (for(v <- versions; e <- exts) yield {
         val f = v.filename + e
-        (HttpStub + f) -> (v -> createResponse("files/repo/"+ f))
+        (Stub + f) -> (v -> createResponse("files/repo/"+ f))
       })
     }
 
     val news = {
       (for(v <- versions; r <- reps if r._1(v)) yield {
         val f = v.filename.replace(".jar", r._2)
-        (HttpStub + f) -> (v -> createResponse("files/repo/"+ f))
+        (Stub + f) -> (v -> createResponse("files/repo/"+ f))
       })
     }
 
     val gruj =
       (for(v <- versions if v.grujed) yield {
         val f = "gruj_vs_"+ v.filename
-        (HttpStub + f) -> (v -> createResponse("files/gruj/"+ f))
+        (Stub + f) -> (v -> createResponse("files/gruj/"+ f))
       })
 
     (files ++ news ++ gruj).toMap
   }
 
   lazy val proxyCache =
-    (for(v <- versions if v.grujed) yield
-      (HttpProxy + v.filename) -> RedirectResponse(v.url)
-    ).toMap
+    (for(v <- versions if v.grujed) yield {
+      val f = v.filename
+      (Proxy + f) -> RedirectResponse(v.url)
+    }).toMap
+
+  def makeStub(r: Req) =
+    (r.hostAndPath + r.uri).replaceFirst("https?://", "")
 
   def isDefinedAt(r: Req) = {
-    val fullUrl = r.hostAndPath + r.uri
-    localCache.isDefinedAt(fullUrl) ||
-    proxyCache.isDefinedAt(fullUrl)
+    val stubUrl = makeStub(r)
+
+    localCache.isDefinedAt(stubUrl) ||
+    proxyCache.isDefinedAt(stubUrl)
   }
 
   def apply(r: Req) = {
-    val fullUrl = r.hostAndPath + r.uri
+    val stubUrl = makeStub(r)
+
     () => (
-      localCache.get(fullUrl).map{ case(v, res) =>
+      localCache.get(stubUrl).map{ case(v, res) =>
         new SBTResponse(r, v, res).serveResponse()
       } orElse
 
-      proxyCache.get(fullUrl)
+      proxyCache.get(stubUrl)
     )
   }
 

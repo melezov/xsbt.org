@@ -25,7 +25,7 @@
           title="Open the official GitHub repo">Official GitHub repo</a></li>
         <li><a target="_blank" href="http://www.scala-sbt.org/"
           title="Open the official website">Official website</a></li>
-        <li><a target="_blank" href="http://repo.typesafe.com/typesafe/ivy-releases/org.scala-tools.sbt/sbt-launch/"
+        <li><a target="_blank" href="http://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/"
           title="Open the official Typesafe binary repo">Typesafe repo</a></li>
         <li><a target="_blank" href="http://code.google.com/p/simple-build-tool/wiki/Setup"
           title="Open the legacy Google code pages">Legacy Google code pages</a></li>
@@ -34,20 +34,20 @@
       <table id="releases" class="tablesorter lift:VersionsTable">
         <thead>
           <tr>
-            <th rel="version" title="Standardized launcher name">Version</th>
-            <th rel="date" title="Publication date">Date</th>
-            <th rel="size" title="Size in kibibytes">Size</th>
-            <th rel="remote" title="Remote HTTP URL (original source)">Remote<sup>*</sup></th>
-            <th rel="proxy" title="Redirect to the remote HTTP URL">Proxy<sup>*</sup></th>
-            <th rel="local" title="Download from Xsbt.org via HTTP">Local<sup>*</sup></th>
-            <th rel="ftp" title="Download from Xsbt.org via FTP">FTP<sup>*</sup></th>
-            <th rel="gopher" title="Download from Xsbt.org via Gopher">Gopher<sup>*</sup></th>
-            <th rel="sha-1" title="Hover for the SHA-1 checksum, or download as a file">SHA-1<sup>*</sup></th>
-            <th rel="md5" title="Hover for the MD5 checksum, or download as a file">MD5<sup>*</sup></th>
-            <th rel="url" title="Download the remote URL as a file">URL<sup>*</sup></th>
-            <th rel="gruj" title="Download a targeted version of GRUJ for this launcher">GRUJ<sup>*</sup></th>
-            <th rel="opt" title="Download an optimized (recompressed) version of this launcher">Opt<sup>*</sup></th>
-            <th rel="exe" title="Download a Windows executable version of this launcher">Exe<sup>*</sup></th>
+            <th title="Standardized launcher name">Version</th>
+            <th title="Publication date">Date</th>
+            <th title="Size in kibibytes">Size</th>
+            <th title="Remote HTTP URL (original source)">Remote<sup>*</sup></th>
+            <th title="Redirect to the remote HTTP URL">Proxy<sup>*</sup></th>
+            <th title="Download from Xsbt.org via HTTP">Local<sup>*</sup></th>
+            <th title="Download from Xsbt.org via FTP">FTP<sup>*</sup></th>
+            <th title="Download from Xsbt.org via Gopher">Gopher<sup>*</sup></th>
+            <th title="Hover for the SHA-1 checksum, or download as a file">SHA-1<sup>*</sup></th>
+            <th title="Hover for the MD5 checksum, or download as a file">MD5<sup>*</sup></th>
+            <th title="Download the remote URL as a file">URL<sup>*</sup></th>
+            <th title="Download a targeted version of GRUJ for this launcher">GRUJ<sup>*</sup></th>
+            <th title="Download an optimized (recompressed) version of this launcher">Opt<sup>*</sup></th>
+            <th title="Download a Windows executable version of this launcher">Exe<sup>*</sup></th>
           </tr>
         </thead>
 
@@ -117,7 +117,9 @@
         </li>
         <li>
           <strong id="local">Local</strong>:<br />
-          Local copy of the release, direct HTTP download.
+          Local copy of the release, with<br />
+          direct HTTP downloads from <a href="http://xsbt.org/" title="Open HTTP version of xsbt.org">http://xsbt.org/</a> and<br />
+          direct HTTPS downloads from <a href="https://xsbt.org/" title="Open HTTPS version of xsbt.org">https://xsbt.org/</a>
         </li>
         <li>
           <strong id="ftp">FTP</strong>:<br />
