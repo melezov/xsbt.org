@@ -1,4 +1,5 @@
-package org.xsbt.snippet
+package org.xsbt
+package snippet
 
 object StaticJS extends hr.element.etb.lift.snippet.StaticJS {
   override val root = "static"

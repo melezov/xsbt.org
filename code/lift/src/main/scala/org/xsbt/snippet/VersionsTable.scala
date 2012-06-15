@@ -1,7 +1,8 @@
-package org.xsbt.snippet
+package org.xsbt
+package snippet
 
-import org.xsbt.lib.URIs
-import org.xsbt.versions._
+import lib.URIs
+import versions._
 import SBTVersions.versions
 
 import org.scala_tools.time.Imports._

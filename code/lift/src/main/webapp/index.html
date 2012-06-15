@@ -6,8 +6,8 @@
     <title>XSBT.org</title>
     <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/favicon.ico" />
 
-    <meta name="keywords" content="SBT, XSBT, Scala, Simple Build Tool, Launch, Launcher" />
-    <meta name="description" content="A place to download Simple Build Tool Launchers" />
+    <meta name="keywords" content="SBT, XSBT, Scala, Simple Build Tool, launch, launcher" />
+    <meta name="description" content="A place to download Simple Build Tool launchers" />
     <meta name="author" content="Element d.o.o." />
 
     <link rel="stylesheet" type="text/css" href="/static/css/blueprint/screen.css"/>
@@ -88,6 +88,17 @@
 
       <hr />
 
+      <lift:HideOnHttps>
+      <h3>XSBT.org is also available at <a href="https://xsbt.org/" title="Open HTTPS version of xsbt.org">https://xsbt.org/</a></h3>
+      </lift:HideOnHttps>
+
+      <p>
+        Feel more than welcome to fork the project on GitHub <a href="https://github.com/melezov/xsbt.org">https://github.com/melezov/xsbt.org</a><br />
+        Or, if you have an interesting XSBT download related resource give me a shout and we can add it to the list.
+      </p>
+
+      <hr />
+
       <h3>Legend:</h3>
       <ul id="legend">
         <li>
@@ -95,18 +106,22 @@
           Standardized launcher name, which may differ from the original filename<br />
           (e.g. all 0.11.x are originally named just &quot;sbt-launch.jar&quot;)
         </li>
+
         <li>
           <strong id="date">Date</strong>:<br />
           Date when the launcher was first published on the binary repository.
         </li>
+
         <li>
           <strong id="size">Size</strong>:<br />
           Size in kibibytes.
         </li>
+
         <li>
           <strong id="remote">Remote</strong>:<br />
           Direct URL link to the remote HTTP binary repository.
         </li>
+
         <li>
           <strong id="proxy">Proxy</strong>:<br />
           This link performs a redirect to the official binary release repository.<br />
@@ -115,43 +130,51 @@
           link will redirect to the next available failover repository
           or serve the local launcher instance.
         </li>
+
         <li>
           <strong id="local">Local</strong>:<br />
           Local copy of the release, with<br />
           direct HTTP downloads from <a href="http://xsbt.org/" title="Open HTTP version of xsbt.org">http://xsbt.org/</a> and<br />
           direct HTTPS downloads from <a href="https://xsbt.org/" title="Open HTTPS version of xsbt.org">https://xsbt.org/</a>
         </li>
+
         <li>
           <strong id="ftp">FTP</strong>:<br />
           Local copy of the release, direct FTP download.<br />
           FTP download index is available at <a href="ftp://xsbt.org/" title="Open FTP version of xsbt.org" target="_blank">ftp://xsbt.org/</a><br />
           Alternatively, you can also use the FTPs (secure) connection at <a href="ftps://xsbt.org/" title="Open FTPs version of xsbt.org" target="_blank">ftps://xsbt.org/</a>
         </li>
+
         <li>
           <strong id="gopher">Gopher</strong>:<br />
           Local copy of the release, direct Gopher download.<br />
           Gopher download index is available at <a href="gopher://xsbt.org/" title="Open Gopher version of xsbt.org" target="_blank">gopher://xsbt.org/</a>
         </li>
+
         <li>
           <strong id="sha-1">SHA-1</strong>:<br />
           Local copy of the SHA-1 launcher checksum in a plaintext file.<br />
           You can also hover over the link to see the checksum.
         </li>
+
         <li>
           <strong id="md5">MD5</strong>:<br />
           Local copy of the MD5 launcher checksum in a plaintext file.<br />
           You can also hover over the link to see the checksum.
         </li>
+
         <li>
           <strong id="url">URL</strong>:<br />
           Local copy of the remote repository HTTP URL in a plaintext file.
         </li>
+
         <li>
           <strong id="gruj">GRUJ</strong>:<br />
           Local copy of a GRUJ bootloader for that specific launcher.<br />
           GRUJ will download the launcher from the official repo.<br />
           See <a href="http://gruj.org/" title="Open GRUJ homepage" target="_blank">http://gruj.org/</a>
         </li>
+
         <li>
           <strong id="opt">Opt</strong>:<br />
           An optimized version of the launcher jar optimized with
@@ -162,6 +185,7 @@
           <a title="Open defluff release thread" rel="external" href="http://encode.ru/threads/1214-defluff-a-deflate-huffman-optimizer" target="_blank">defluff</a>.<br />
           All the bytecode and resources are bytewise identical, but the resulting jar file is about 5% smaller.
         </li>
+
         <li>
           <strong id="exe">Exe</strong>:<br />
           Windows executable version of the sbt launchers, packaged with
@@ -169,6 +193,7 @@
           Project homepage: <a href="https://github.com/sbt/sbt-windows-install" target="_blank" title="Open the SBT Windows GitHub project homepage">https://github.com/sbt/sbt-windows-install</a>
         </li>
       </ul>
+
     </div>
 
     <lift:StaticJS name="jquery"/>

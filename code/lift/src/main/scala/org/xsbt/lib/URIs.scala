@@ -1,10 +1,12 @@
-package org.xsbt.lib
+package org.xsbt
+package lib
+
+import versions._
+import SBTVersions._
 
 import java.io.File
 import net.liftweb.common._
 import scala.collection.mutable.LinkedHashMap
-import _root_.org.xsbt.versions._
-import SBTVersions._
 import _root_.org.apache.commons.io.{FileUtils, FilenameUtils}
 import net.liftweb.http._
 import net.liftweb.util.Helpers._
@@ -17,10 +19,17 @@ object URIs extends LiftRules.DispatchPF {
   val Stub = Host + "/"
   val Proxy = "proxy." + Stub
 
+  def isHttps() =
+    S.getRequestHeader("X-Forwarded-Proto") == Full("https")
+  
   def proto() =
-    S.getRequestHeader("X-Forwarded-Proto")
-      .openOr("http") + "://"
-
+    if (isHttps()) {
+      "https://"
+    }
+    else {
+      "http://"
+    }
+    
   def currentProxy() = proto() + Proxy
   def currentStub() = proto() + Stub
 

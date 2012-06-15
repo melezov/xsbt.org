@@ -1,4 +1,5 @@
-package org.xsbt.snippet
+package org.xsbt
+package snippet
 
 import net.liftweb.util.Helpers._
 
