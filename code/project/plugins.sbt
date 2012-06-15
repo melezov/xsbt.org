@@ -8,7 +8,7 @@
 
 resolvers += Classpaths.typesafeResolver
 
-addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.0.0")
+addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.1.0-RC1")
 
 // +-------------------------------------------------------------------------------------+
 // | XSBT Web plugin (https://github.com/siasia/xsbt-web-plugin)                         |
@@ -27,7 +27,7 @@ libraryDependencies <+= sbtVersion(v => "com.github.siasia" %% "xsbt-web-plugin"
 resolvers += Resolver.url("sbt-plugin-releases",
   new URL("http://scalasbt.artifactoryonline.com/scalasbt/sbt-plugin-releases/"))(Resolver.ivyStylePatterns)
     
-addSbtPlugin("me.lessis" % "coffeescripted-sbt" % "0.2.2")
+addSbtPlugin("me.lessis" % "coffeescripted-sbt" % "0.2.3")
 
 // +------------------------------------------------------------------------------------+
 // | Less SBT (https://github.com/softprops/less-sbt)                                   |
@@ -39,4 +39,4 @@ addSbtPlugin("me.lessis" % "coffeescripted-sbt" % "0.2.2")
 //resolvers += Resolver.url("sbt-plugin-releases",
 //  new URL("http://scalasbt.artifactoryonline.com/scalasbt/sbt-plugin-releases/"))(Resolver.ivyStylePatterns)
 
-addSbtPlugin("me.lessis" % "less-sbt" % "0.1.9")
+addSbtPlugin("me.lessis" % "less-sbt" % "0.1.10")

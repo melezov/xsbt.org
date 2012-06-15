@@ -39,7 +39,7 @@ object Dependencies {
   val scalaTime = "org.scala-tools.time" % "time_2.9.1" % "0.5"
   val commonsIo = "commons-io" % "commons-io" % "2.3"
 
-  val logback = "ch.qos.logback" % "logback-classic" % "1.0.3" % "compile->default"
+  val logback = "ch.qos.logback" % "logback-classic" % "1.0.6" % "compile->default"
 }
 
 object XOBuild extends Build {
