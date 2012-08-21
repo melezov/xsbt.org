@@ -21,7 +21,7 @@ object URIs extends LiftRules.DispatchPF {
 
   def isHttps() =
     S.getRequestHeader("X-Forwarded-Proto") == Full("https")
-  
+
   def proto() =
     if (isHttps()) {
       "https://"
@@ -29,7 +29,7 @@ object URIs extends LiftRules.DispatchPF {
     else {
       "http://"
     }
-    
+
   def currentProxy() = proto() + Proxy
   def currentStub() = proto() + Stub
 
