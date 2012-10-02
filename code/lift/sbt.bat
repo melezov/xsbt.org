@@ -1,3 +1,3 @@
 @echo off
 
-call "%~dp0\..\sbt.bat" "project Lift" %*
+call "%~dp0..\sbt.bat" "project Lift" %*

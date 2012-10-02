@@ -26,6 +26,6 @@ class Boot extends Bootable {
 
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
 
-    LiftRules.statelessDispatchTable.append(URIs)
+    LiftRules.statelessDispatch.append(URIs)
   }
 }
