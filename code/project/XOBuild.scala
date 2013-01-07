@@ -11,7 +11,7 @@ object BuildSettings {
   , scalaVersion  := "2.9.2"
   , scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "UTF-8", "-optimise", "-Yrepl-sync")
 
-  , resolvers := Seq("Element Nexus" at "http://maven.element.hr/nexus/content/groups/public")
+  , resolvers := Seq("Element Nexus" at "http://repo.element.hr/nexus/content/groups/public")
 
   , externalResolvers <<= resolvers map { r =>
       Resolver.withDefaultResolvers(r, mavenCentral = false)
@@ -34,21 +34,17 @@ object BuildSettings {
 }
 
 object Dependencies {
-  val jetty = "org.eclipse.jetty" % "jetty-webapp" % "7.6.7.v20120910" % "container"
+  val jetty = "org.eclipse.jetty" % "jetty-webapp" % "7.6.8.v20121106" % "container"
   val orbit = "org.eclipse.jetty.orbit" % "javax.servlet" % "2.5.0.v201103041518" % "container" artifacts Artifact("javax.servlet", "jar", "jar")
 
-  val liftWebKit = "net.liftweb" %% "lift-webkit" % "2.5-M1"
-  val etbLift = "hr.element.etb" %% "etb-lift" % "0.0.21-P0"
+  val liftWebKit = "net.liftweb" %% "lift-webkit" % "2.5-M3"
+  val etbLift = "hr.element.etb" %% "etb-lift" % "0.0.23-P0"
 
-  val scalaTime = Seq(
-    "org.joda"              % "joda-convert"  % "1.2"
-  , "joda-time"             % "joda-time"     % "2.1"
-  , "org.scala-tools.time"  % "time_2.9.1"    % "0.5"
-  )
+  val scalaTime = "org.scalaj" %% "scalaj-time" % "0.6"
 
   val commonsIo = "commons-io" % "commons-io" % "2.4"
 
-  val logback = "ch.qos.logback" % "logback-classic" % "1.0.6"
+  val logback = "ch.qos.logback" % "logback-classic" % "1.0.9"
 }
 
 object XOBuild extends Build {
@@ -67,12 +63,13 @@ object XOBuild extends Build {
   import less.Plugin._
   import LessKeys._
 
-  val depsLift = scalaTime ++ Seq(
+  val depsLift = Seq(
     jetty
   , orbit
   , liftWebKit
   , etbLift
   , commonsIo
+  , scalaTime
   , logback
   )
 

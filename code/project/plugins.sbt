@@ -1,7 +1,7 @@
 resolvers := Seq(
-  "Element Nexus" at "http://maven.element.hr/nexus/content/groups/public/"
+  "Element Nexus" at "http://repo.element.hr/nexus/content/groups/public/"
 , Resolver.url("Element Nexus (Ivy)",
-    url("http://maven.element.hr/nexus/content/groups/public/"))(Resolver.ivyStylePatterns)
+    url("http://repo.element.hr/nexus/content/groups/public/"))(Resolver.ivyStylePatterns)
 )
 
 externalResolvers <<= resolvers map { r =>
@@ -16,10 +16,10 @@ externalResolvers <<= resolvers map { r =>
 // | See also: Scala IDE downloads (http://download.scala-ide.org/)                     |
 // +------------------------------------------------------------------------------------+
 
-addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.1.0")
+addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.1.1")
 
 // +-------------------------------------------------------------------------------------+
-// | XSBT Web plugin (https://github.com/siasia/xsbt-web-plugin)                         |
+// | XSBT Web plugin (https://github.com/JamesEarlDouglas/xsbt-web-plugin)               |
 // | Implements SBT 0.7.x Web project actions: "jetty-run" -> "container:start", etc ... |
 // +-------------------------------------------------------------------------------------+
 
