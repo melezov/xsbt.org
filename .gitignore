@@ -4,12 +4,5 @@
 .settings
 target
 
-code/lift/src/main/webapp/static/coffee/*.js
-code/lift/src/main/webapp/static/less/*.css
-code/project/boot
-code/project/project
-
 files/ftp/*
 files/gopher/*
-
-*.log

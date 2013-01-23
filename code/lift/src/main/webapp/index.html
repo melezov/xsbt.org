@@ -10,8 +10,12 @@
     <meta name="description" content="A place to download Simple Build Tool launchers" />
     <meta name="author" content="Element d.o.o." />
 
-    <link rel="stylesheet" type="text/css" href="/static/css/blueprint/screen.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/less/xsbt.css"/>
+    <lift:SharedCSS name="../blueprint/screen" media="screen, projection"/>
+    <lift:SharedCSS name="../blueprint/print" media="print"/>
+    <lift:SharedCSS name="../blueprint/plugins/fancy-type/screen" media="screen, projection"/>
+    <lift:SharedCSS.comment if="lt IE 8" name="../blueprint/ie" media="screen, projection"/>
+
+    <lift:GeneratedCSS name="xsbt" min="never"/>
   </head>
 
   <body>
@@ -196,11 +200,11 @@
 
     </div>
 
-    <lift:StaticJS name="jquery"/>
-    <lift:StaticJS name="jquery.tablesorter"/>
-    <lift:StaticJS name="jquery.scrollTo"/>
+    <lift:SharedJS name="jquery"/>
+    <lift:SharedJS name="jquery.tablesorter"/>
+    <lift:SharedJS name="jquery.scrollTo"/>
 
-    <script type="text/javascript" src="/static/coffee/xsbt.js"></script>
+    <lift:GeneratedJS name="xsbt" min="never"/>
     <lift:embed what="google-analytics"/>
   </body>
 </html>

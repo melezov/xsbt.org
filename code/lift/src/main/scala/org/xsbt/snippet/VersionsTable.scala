@@ -5,7 +5,7 @@ import lib.URIs
 import versions._
 import SBTVersions.versions
 
-import org.scala_tools.time.Imports._
+import com.github.nscala_time.time.Imports._
 
 import java.text.NumberFormat
 import java.util.Locale

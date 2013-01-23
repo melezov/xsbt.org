@@ -34,13 +34,13 @@ object BuildSettings {
 }
 
 object Dependencies {
-  val jetty = "org.eclipse.jetty" % "jetty-webapp" % "7.6.8.v20121106" % "container"
-  val orbit = "org.eclipse.jetty.orbit" % "javax.servlet" % "2.5.0.v201103041518" % "container" artifacts Artifact("javax.servlet", "jar", "jar")
+  val jetty = "org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "container"
+  val orbit = "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container" artifacts Artifact("javax.servlet", "jar", "jar")
 
   val liftWebKit = "net.liftweb" %% "lift-webkit" % "2.5-M4"
-  val etbLift = "hr.element.etb" %% "etb-lift" % "0.0.25"
+  val etbLift = "hr.element.etb" %% "etb-lift" % "0.1.1"
 
-  val scalaTime = "org.scalaj" %% "scalaj-time" % "0.6"
+  val scalaTime = "com.github.nscala-time" %% "nscala-time" % "0.2.0"
 
   val commonsIo = "commons-io" % "commons-io" % "2.4"
 
@@ -50,18 +50,6 @@ object Dependencies {
 object XOBuild extends Build {
   import BuildSettings._
   import Dependencies._
-
-  // Web plugin
-  import com.github.siasia.WebPlugin._
-  import com.github.siasia.PluginKeys._
-
-  // Coffeescript plugin
-  import coffeescript.Plugin._
-  import CoffeeKeys._
-
-  // Less plugin
-  import less.Plugin._
-  import LessKeys._
 
   val depsLift = Seq(
     jetty
@@ -79,6 +67,18 @@ object XOBuild extends Build {
   , settings = bsCore
   )
 
+  // Web plugin
+  import com.github.siasia.WebPlugin._
+  import com.github.siasia.PluginKeys._
+
+  // Coffeescript plugin
+  import coffeescript.Plugin._
+  import CoffeeKeys._
+
+  // Less plugin
+  import less.Plugin._
+  import LessKeys._
+
   lazy val lift = Project(
     "Lift",
     file("lift"),
@@ -88,10 +88,10 @@ object XOBuild extends Build {
         port in container.Configuration := 8120
       , scanDirectories in Compile := Nil
       ) ++ coffeeSettings ++ Seq(
-        resourceManaged in (Compile, coffee) <<= (webappResources in Compile)(_.get.head / "static" / "coffee")
+        resourceManaged in (Compile, coffee) <<= (webappResources in Compile)(_.get.head / "static" / "coffee-js")
       ) ++ lessSettings ++ Seq(
         mini in (Compile, less) := true
-      , resourceManaged in (Compile, less) <<= (webappResources in Compile)(_.get.head / "static" / "less")
+      , resourceManaged in (Compile, less) <<= (webappResources in Compile)(_.get.head / "static" / "less-css")
       )
   ) dependsOn(core)
 }
