@@ -37,8 +37,8 @@ object Dependencies {
   val jetty = "org.eclipse.jetty" % "jetty-webapp" % "7.6.8.v20121106" % "container"
   val orbit = "org.eclipse.jetty.orbit" % "javax.servlet" % "2.5.0.v201103041518" % "container" artifacts Artifact("javax.servlet", "jar", "jar")
 
-  val liftWebKit = "net.liftweb" %% "lift-webkit" % "2.5-M3"
-  val etbLift = "hr.element.etb" %% "etb-lift" % "0.0.23-P0"
+  val liftWebKit = "net.liftweb" %% "lift-webkit" % "2.5-M4"
+  val etbLift = "hr.element.etb" %% "etb-lift" % "0.0.25"
 
   val scalaTime = "org.scalaj" %% "scalaj-time" % "0.6"
 
