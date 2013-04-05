@@ -72,7 +72,8 @@ public enum SBTVersion {
   SBT_0_12_1      ("sbt-launch-0.12.1.jar",       "http://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.12.1/sbt-launch.jar",       "45c28c7c6328d6ecf8e9dc51003a0f1af71516ad", "9d832c4cfdb889103bd37a8bda3faa0e", 1349051199, 1103618, false, true,  false,     -1, false),
   SBT_0_12_2_RC1  ("sbt-launch-0.12.2-RC1.jar",   "http://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.12.2-RC1/sbt-launch.jar",   "f60fceee8e68c78ae68e3387dca6e69d1fad4e50", "990664c65dc5ee52f95edcd9231c4744", 1355424815, 1105362, true,  true,  false,     -1, false),
   SBT_0_12_2_RC2  ("sbt-launch-0.12.2-RC2.jar",   "http://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.12.2-RC2/sbt-launch.jar",   "5e33a7cfd88ca0a05fac538649e1c2ed444458cd", "db591e4ab57657591ae3ccc666f77b77", 1357243720, 1105363, true,  true,  false,     -1, false),
-  SBT_0_12_2      ("sbt-launch-0.12.2.jar",       "http://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.12.2/sbt-launch.jar",       "ef6213597489edd8d1955086924f488949dd4975", "d523ab71b5d2bcaead80d21d0af79361", 1358351073, 1105354, false, true,  false,     -1, false);
+  SBT_0_12_2      ("sbt-launch-0.12.2.jar",       "http://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.12.2/sbt-launch.jar",       "ef6213597489edd8d1955086924f488949dd4975", "d523ab71b5d2bcaead80d21d0af79361", 1358351073, 1105354, false, true,  false,     -1, false),
+  SBT_0_12_3      ("sbt-launch-0.12.3.jar",       "http://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.12.3/sbt-launch.jar",       "38d15379d20a8e8113e59285ff8a1e52b01b98b6", "d523ab71b5d2bcaead80d21d0af79361", 1364523759, 1105722, false, true,  false,     -1, false);
 
   public final String filename;
   public final String url;

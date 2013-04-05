@@ -8,7 +8,7 @@ object BuildSettings {
   val defaultSettings = Defaults.defaultSettings ++ Seq(
     organization  := "hr.element.xsbt"
 
-  , scalaVersion  := "2.9.2"
+  , scalaVersion  := "2.10.1"
   , scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "UTF-8", "-optimise", "-Yrepl-sync")
 
   , resolvers := Seq("Element Nexus" at "http://repo.element.hr/nexus/content/groups/public")
@@ -34,17 +34,17 @@ object BuildSettings {
 }
 
 object Dependencies {
-  val jetty = "org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "container"
+  val jetty = "org.eclipse.jetty" % "jetty-webapp" % "8.1.10.v20130312" % "container"
   val orbit = "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container" artifacts Artifact("javax.servlet", "jar", "jar")
 
-  val liftWebKit = "net.liftweb" %% "lift-webkit" % "2.5-M4"
-  val etbLift = "hr.element.etb" %% "etb-lift" % "0.1.1"
+  val liftWebKit = "net.liftweb" %% "lift-webkit" % "2.5-RC2"
+  val etbLift = "hr.element.etb" %% "etb-lift" % "0.1.2"
 
   val scalaTime = "com.github.nscala-time" %% "nscala-time" % "0.2.0"
 
   val commonsIo = "commons-io" % "commons-io" % "2.4"
 
-  val logback = "ch.qos.logback" % "logback-classic" % "1.0.9"
+  val logback = "ch.qos.logback" % "logback-classic" % "1.0.11"
 }
 
 object XOBuild extends Build {
