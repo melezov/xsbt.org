@@ -52,7 +52,7 @@ class VersionRow(val v: SBTVersion) {
     VersionRow.bytesFormat.format(v.filesize)
 
   val kbSize =
-    math.round(v.filesize / 1024.).toInt
+    math.round(v.filesize / 1024.0).toInt
 
   val dateTime =
     new DateTime(v.modTime)

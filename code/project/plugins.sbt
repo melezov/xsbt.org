@@ -16,14 +16,14 @@ externalResolvers <<= resolvers map { r =>
 // | See also: Scala IDE downloads (http://download.scala-ide.org/)                     |
 // +------------------------------------------------------------------------------------+
 
-addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.1.2")
+addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.2.0")
 
 // +-------------------------------------------------------------------------------------+
 // | XSBT Web plugin (https://github.com/JamesEarlDouglas/xsbt-web-plugin)               |
 // | Implements SBT 0.7.x Web project actions: "jetty-run" -> "container:start", etc ... |
 // +-------------------------------------------------------------------------------------+
 
-libraryDependencies += "com.github.siasia" %% "xsbt-web-plugin" % "0.12.0-0.2.11.1"
+addSbtPlugin("com.earldouglas" % "xsbt-web-plugin" % "0.3.0")
 
 // +------------------------------------------------------------------------------------+
 // | CoffeeScripted SBT (https://github.com/softprops/coffeescripted-sbt)               |
