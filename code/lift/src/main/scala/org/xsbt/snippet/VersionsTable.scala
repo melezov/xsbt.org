@@ -92,9 +92,6 @@ class VersionRow(val v: SBTVersion) {
 
   val formatOptSize =
     VersionRow.bytesFormat.format(v.optSize)
-
-    val localExe =
-    URIs.currentStub + v.filename.replace(".jar", ".exe")
 }
 
 object ShowAll extends SessionVar[Boolean](false)
@@ -106,9 +103,9 @@ object VersionsTable {
   def showGrujed(vR: VersionRow) =
     (n: NodeSeq) =>
       if (vR.v.grujed) {
-        n.bind("ver",
-          AttrBindParam("local_gruj", vR.localGruj, "href"),
-          FuncFormatAttrBindParam("gruj_title", "title", vR.v.filename)
+        n.bind("ver"
+        , AttrBindParam("local_gruj", vR.localGruj, "href")
+        , FuncFormatAttrBindParam("gruj_title", "title", vR.v.filename)
         )
       }
       else {
@@ -121,17 +118,17 @@ object VersionsTable {
         NodeSeq.Empty
       }
       else {
-        n.bind("ver",
-          FuncFormatAttrBindParam("gruj_na", "title", vR.v.filename)
+        n.bind("ver"
+        , FuncFormatAttrBindParam("gruj_na", "title", vR.v.filename)
         )
       }
 
   def showOpted(vR: VersionRow) =
     (n: NodeSeq) =>
       if (vR.v.opted) {
-        n.bind("ver",
-          AttrBindParam("local_opt", vR.localOpt, "href"),
-          FuncFormatAttrBindParam("opt_title", "title", vR.v.filename, vR.formatOptSize)
+        n.bind("ver"
+        , AttrBindParam("local_opt", vR.localOpt, "href")
+        , FuncFormatAttrBindParam("opt_title", "title", vR.v.filename, vR.formatOptSize)
         )
       }
       else {
@@ -144,31 +141,8 @@ object VersionsTable {
         NodeSeq.Empty
       }
       else {
-        n.bind("ver",
-          FuncFormatAttrBindParam("opt_na", "title", vR.v.filename)
-        )
-      }
-
-  def showExeed(vR: VersionRow) =
-    (n: NodeSeq) =>
-      if (vR.v.exeed) {
-        n.bind("ver",
-          AttrBindParam("local_exe", vR.localExe, "href"),
-          FuncFormatAttrBindParam("exe_title", "title", vR.v.filename)
-        )
-      }
-      else {
-        NodeSeq.Empty
-      }
-
-  def showNoExeed(vR: VersionRow) =
-    (n: NodeSeq) =>
-      if (vR.v.exeed) {
-        NodeSeq.Empty
-      }
-      else {
-        n.bind("ver",
-          FuncFormatAttrBindParam("exe_na", "title", vR.v.filename)
+        n.bind("ver"
+        , FuncFormatAttrBindParam("opt_na", "title", vR.v.filename)
         )
       }
 
@@ -184,53 +158,50 @@ object VersionsTable {
   def renderRow(v: SBTVersion) = {
     val vR = new VersionRow(v)
 
-    (_: NodeSeq).bind("ver",
-      FuncAttrOptionBindParam("legacy_class", attrIf(v.legacy), "class"),
-      FuncAttrOptionBindParam("legacy_hidden", attrIf(v.legacy && !ShowAll.is), "hidden"),
+    (_: NodeSeq).bind("ver"
+    , FuncAttrOptionBindParam("legacy_class", attrIf(v.legacy), "class")
+    , FuncAttrOptionBindParam("legacy_hidden", attrIf(v.legacy && !ShowAll.is), "hidden")
 
-      "filename_sort" -> vR.paddedOrdinal,
-      "filename" -> v.filename,
+    , "filename_sort" -> vR.paddedOrdinal
+    , "filename" -> v.filename
 
-      "publish_date" -> vR.isoDate,
-      FuncFormatAttrBindParam("publish_timestamp", "title", vR.isoTimestamp),
+    , "publish_date" -> vR.isoDate
+    , FuncFormatAttrBindParam("publish_timestamp", "title", vR.isoTimestamp)
 
-      "filesize_sort" -> vR.paddedSize,
-      FuncFormatAttrBindParam("filesize", "title", vR.formatFilesize),
-      "filesize_kb" -> vR.kbSize,
+    , "filesize_sort" -> vR.paddedSize
+    , FuncFormatAttrBindParam("filesize", "title", vR.formatFilesize)
+    , "filesize_kb" -> vR.kbSize
 
-      AttrBindParam("local_jar", vR.localJar, "href"),
-      AttrBindParam("proxy_jar", vR.proxyJar, "href"),
-      AttrBindParam("remote_jar", v.url, "href"),
+    , AttrBindParam("local_jar", vR.localJar, "href")
+    , AttrBindParam("proxy_jar", vR.proxyJar, "href")
+    , AttrBindParam("remote_jar", v.url, "href")
 
-      AttrBindParam("ftp_jar", vR.ftpJar, "href"),
-      AttrBindParam("gopher_jar", vR.gopherJar, "href"),
+    , AttrBindParam("ftp_jar", vR.ftpJar, "href")
+    , AttrBindParam("gopher_jar", vR.gopherJar, "href")
 
-      AttrBindParam("local_md5", vR.localMD5, "href"),
-      FuncFormatAttrBindParam("md5", "title", v.md5),
+    , AttrBindParam("local_md5", vR.localMD5, "href")
+    , FuncFormatAttrBindParam("md5", "title", v.md5)
 
-      AttrBindParam("local_sha1", vR.localSHA1, "href"),
-      FuncFormatAttrBindParam("sha1", "title", v.sha1),
+    , AttrBindParam("local_sha1", vR.localSHA1, "href")
+    , FuncFormatAttrBindParam("sha1", "title", v.sha1)
 
-      AttrBindParam("local_url", vR.localURL, "href"),
-      "gruj" -> showGrujed(vR),
-      "no_gruj" -> showNoGrujed(vR),
+    , AttrBindParam("local_url", vR.localURL, "href")
+    , "gruj" -> showGrujed(vR)
+    , "no_gruj" -> showNoGrujed(vR)
 
-      "opt" -> showOpted(vR),
-      "no_opt" -> showNoOpted(vR),
-
-      "exe" -> showExeed(vR),
-      "no_exe" -> showNoExeed(vR)
+    , "opt" -> showOpted(vR)
+    , "no_opt" -> showNoOpted(vR)
     )
   }
 
   def render(q: NodeSeq) =
-    q.bind("ver",
-      FuncAttrOptionBindParam("hide_legacy_hidden", attrIf(!ShowAll.is), "hidden"),
-      FuncAttrOptionBindParam("show_legacy_hidden", attrIf(ShowAll.is), "hidden"),
-      "show_legacy_message" ->
+    q.bind("ver"
+    , FuncAttrOptionBindParam("hide_legacy_hidden", attrIf(!ShowAll.is), "hidden")
+    , FuncAttrOptionBindParam("show_legacy_hidden", attrIf(ShowAll.is), "hidden")
+    , "show_legacy_message" ->
         ((n: NodeSeq) => Text(n.text.format(VersionRow.useCaseCount, VersionRow.totalCount)))
-    ).bind("ver",
-      "row" ->
+    ).bind("ver"
+    , "row" ->
         ((n: NodeSeq) => versions.reverse.flatMap(renderRow(_)(n))
     ))
 }

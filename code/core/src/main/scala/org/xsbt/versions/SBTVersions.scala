@@ -12,8 +12,7 @@ object SBTVersions {
 
   val reps =
     Map(
-      ((v: SBTVersion) => v.opted) -> "-opt.jar",
-      ((v: SBTVersion) => v.exeed) -> ".exe"
+      ((v: SBTVersion) => v.opted) -> "-opt.jar"
     )
 
   def getFile(path: String) =
