@@ -2,6 +2,7 @@ resolvers := Seq(
   "Element Nexus" at "http://repo.element.hr/nexus/content/groups/public/"
 , Resolver.url("Element Nexus (Ivy)",
     url("http://repo.element.hr/nexus/content/groups/public/"))(Resolver.ivyStylePatterns)
+, "softprops-maven" at "http://dl.bintray.com/content/softprops/maven"
 )
 
 externalResolvers <<= resolvers map { r =>
@@ -16,14 +17,14 @@ externalResolvers <<= resolvers map { r =>
 // | See also: Scala IDE downloads (http://download.scala-ide.org/)                     |
 // +------------------------------------------------------------------------------------+
 
-addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.2.0")
+addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.3.0")
 
 // +-------------------------------------------------------------------------------------+
 // | XSBT Web plugin (https://github.com/JamesEarlDouglas/xsbt-web-plugin)               |
 // | Implements SBT 0.7.x Web project actions: "jetty-run" -> "container:start", etc ... |
 // +-------------------------------------------------------------------------------------+
 
-addSbtPlugin("com.earldouglas" % "xsbt-web-plugin" % "0.3.0")
+addSbtPlugin("com.earldouglas" % "xsbt-web-plugin" % "0.4.0")
 
 // +------------------------------------------------------------------------------------+
 // | CoffeeScripted SBT (https://github.com/softprops/coffeescripted-sbt)               |
@@ -41,4 +42,4 @@ addSbtPlugin("me.lessis" % "coffeescripted-sbt" % "0.2.3")
 // | See also: LESS reference (http://lesscss.org/)                                     |
 // +------------------------------------------------------------------------------------+
 
-addSbtPlugin("me.lessis" % "less-sbt" % "0.1.10")
+addSbtPlugin("me.lessis" % "less-sbt" % "0.2.1")
