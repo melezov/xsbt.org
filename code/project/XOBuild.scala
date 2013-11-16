@@ -8,7 +8,7 @@ object BuildSettings {
   val defaultSettings = Defaults.defaultSettings ++ Seq(
     organization  := "hr.element.xsbt"
 
-  , scalaVersion  := "2.10.2"
+  , scalaVersion  := "2.10.3"
   , scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "UTF-8", "-optimise", "-Yrepl-sync")
 
   , resolvers := Seq("Element Nexus" at "http://repo.element.hr/nexus/content/groups/public")
@@ -30,11 +30,11 @@ object BuildSettings {
 }
 
 object Dependencies {
-  val jetty = "org.eclipse.jetty" % "jetty-webapp" % "8.1.12.v20130726" % "container"
+  val jetty = "org.eclipse.jetty" % "jetty-webapp" % "8.1.14.v20131031" % "container"
   val orbit = "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container" artifacts Artifact("javax.servlet", "jar", "jar")
 
   val liftWebKit = "net.liftweb" %% "lift-webkit" % "2.5.1"
-  val etbLift = "hr.element.etb" %% "etb-lift" % "0.1.4"
+  val etbLift = "hr.element.etb" %% "etb-lift" % "0.1.5"
 
   val scalaTime = "com.github.nscala-time" %% "nscala-time" % "0.6.0"
 

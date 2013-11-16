@@ -1,13 +1,9 @@
 resolvers := Seq(
   "Element Nexus" at "http://repo.element.hr/nexus/content/groups/public/"
-, Resolver.url("Element Nexus (Ivy)",
-    url("http://repo.element.hr/nexus/content/groups/public/"))(Resolver.ivyStylePatterns)
-, "softprops-maven" at "http://dl.bintray.com/content/softprops/maven"
+, Resolver.url("Element Nexus (Ivy)", url("http://repo.element.hr/nexus/content/groups/public/"))(Resolver.ivyStylePatterns)
 )
 
-externalResolvers <<= resolvers map { r =>
-  Resolver.withDefaultResolvers(r, mavenCentral = false)
-}
+externalResolvers := Resolver.withDefaultResolvers(resolvers.value, mavenCentral = false)
 
 // +------------------------------------------------------------------------------------+
 // | SBT Eclipse (https://github.com/typesafehub/sbteclipse)                            |
@@ -17,7 +13,7 @@ externalResolvers <<= resolvers map { r =>
 // | See also: Scala IDE downloads (http://download.scala-ide.org/)                     |
 // +------------------------------------------------------------------------------------+
 
-addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.3.0")
+addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.4.0")
 
 // +-------------------------------------------------------------------------------------+
 // | XSBT Web plugin (https://github.com/JamesEarlDouglas/xsbt-web-plugin)               |
@@ -43,3 +39,10 @@ addSbtPlugin("me.lessis" % "coffeescripted-sbt" % "0.2.3")
 // +------------------------------------------------------------------------------------+
 
 addSbtPlugin("me.lessis" % "less-sbt" % "0.2.2")
+
+// +-------------------------------------------------------------------------------------+
+// | Dependency graph SBT plugin (https://github.com/jrudolph/sbt-dependency-graph)      |
+// | Lists all library dependencies in a nicely formatted way for easy inspection.       |
+// +-------------------------------------------------------------------------------------+
+
+addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.7.4")
