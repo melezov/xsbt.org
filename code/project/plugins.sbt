@@ -24,7 +24,7 @@ addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.3.0")
 // | Implements SBT 0.7.x Web project actions: "jetty-run" -> "container:start", etc ... |
 // +-------------------------------------------------------------------------------------+
 
-addSbtPlugin("com.earldouglas" % "xsbt-web-plugin" % "0.4.0")
+addSbtPlugin("com.earldouglas" % "xsbt-web-plugin" % "0.4.2")
 
 // +------------------------------------------------------------------------------------+
 // | CoffeeScripted SBT (https://github.com/softprops/coffeescripted-sbt)               |
@@ -42,4 +42,4 @@ addSbtPlugin("me.lessis" % "coffeescripted-sbt" % "0.2.3")
 // | See also: LESS reference (http://lesscss.org/)                                     |
 // +------------------------------------------------------------------------------------+
 
-addSbtPlugin("me.lessis" % "less-sbt" % "0.2.1")
+addSbtPlugin("me.lessis" % "less-sbt" % "0.2.2")
